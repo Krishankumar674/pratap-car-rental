@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bookings | Admin Panel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #0f1115;
+      color: #fff;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #13161c;
+      height: 100vh;
+      padding: 25px 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar .logo {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 12px 15px;
+      color: #bfc5d0;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: #1f242e;
+      color: #4ad0ff;
+    }
+
+    /* Main Area */
+    .main {
+      margin-left: 260px;
+      padding: 30px;
+      width: calc(100% - 260px);
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    /* Glass card */
+    .card {
+      background: rgba(255,255,255,0.04);
+      padding: 20px;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .search {
+      padding: 10px 12px;
+      width: 230px;
+      border-radius: 8px;
+      background: #1a1f27;
+      border: 1px solid #2d333d;
+      color: #ddd;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+      font-weight: 600;
+    }
+
+    /* Status badges */
+    .badge {
+      padding: 5px 12px;
+      border-radius: 7px;
+      font-size: 12px;
+      color: #fff;
+    }
+    .ok { background: #2ecc71; }
+    .bad { background: #e74c3c; }
+    .warn { background: #f1c40f; color: #000; }
+
+    /* Buttons */
+    .btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .btn.small { padding: 6px 10px; }
+    .btn.ok { background: #27ae60; color: #fff; }
+    .btn.bad { background: #c0392b; color: #fff; }
+    .btn.logout {
+      background: #ff4d4d;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+    <div class="logo">🚗 Car Rental Admin</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="cars.html">Cars</a>
+      <a class="active" href="bookings.html">Bookings</a>
+      <a href="users.html">Users</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="main-header">
+      <h2>Bookings</h2>
+      <button class="btn logout" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h3>All Bookings</h3>
+        <input type="text" id="searchBooking" class="search" placeholder="Search bookings...">
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Car</th>
+              <th>Date Range</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="bookingTableBody">
+            <tr><td colspan="5">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/admin-api.js"></script>
+  <script src="js/bookings.js"></script>
+</body>
+</html>

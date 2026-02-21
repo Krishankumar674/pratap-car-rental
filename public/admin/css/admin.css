@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f6fa;
+}
+.navbar {
+  background: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  align-items: center;
+}
+.navbar button {
+  background: #fff;
+  color: #007bff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 25px;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card h3 {
+  color: #007bff;
+  font-size: 18px;
+}
+.card p {
+  font-size: 28px;
+  color: #333;
+  font-weight: bold;
+}
+.content {
+  padding: 30px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.data-table th {
+  background: #007bff;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+}
+
+.data-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table tr:hover {
+  background: #f8f9fa;
+}
+
+button {
+  background: #007bff;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}

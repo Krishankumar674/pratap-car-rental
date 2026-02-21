@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Cars | Admin Panel</title>
+  <link rel="stylesheet" href="./css/adminlte.css" />
+  <style>
+    body { background: #f4f6f9; padding: 30px; }
+    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .btn { margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <h2>🚗 Manage Cars</h2>
+  <div class="card mb-4">
+    <h4>Add New Car</h4>
+    <input id="carName" class="form-control mb-2" placeholder="Car Name">
+    <input id="carBrand" class="form-control mb-2" placeholder="Brand">
+    <input id="carSeats" class="form-control mb-2" placeholder="Seats">
+    <input id="carPrice" class="form-control mb-2" placeholder="Price Per Day">
+    <input id="carImage" class="form-control mb-2" placeholder="Image URL (relative path or full)">
+    <button class="btn btn-primary" onclick="addCar()">➕ Add Car</button>
+    <p id="msg" class="text-success mt-2"></p>
+  </div>
+
+  <div class="card">
+    <h4>All Cars</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Seats</th>
+          <th>Price/Day</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cars-body"></tbody>
+    </table>
+  </div>
+
+  <script src="./js/admin-api.js"></script>
+  <script src="./js/cars.js"></script>
+</body>
+</html>

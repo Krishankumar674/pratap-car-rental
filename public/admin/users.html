@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Users | Admin Panel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #0f1115;
+      color: #fff;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #13161c;
+      height: 100vh;
+      padding: 25px 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar .logo {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 12px 15px;
+      color: #bfc5d0;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: #1f242e;
+      color: #4ad0ff;
+    }
+
+    /* Main */
+    .main {
+      margin-left: 260px;
+      padding: 30px;
+      width: calc(100% - 260px);
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      padding: 20px;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .search {
+      padding: 10px 12px;
+      width: 230px;
+      border-radius: 8px;
+      background: #1a1f27;
+      border: 1px solid #2d333d;
+      color: #ddd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn.logout {
+      padding: 8px 14px;
+      background: #ff4d4d;
+      color: #fff;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+    <div class="logo">🚗 Car Rental Admin</div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="cars.html">Cars</a>
+      <a href="bookings.html">Bookings</a>
+      <a class="active" href="users.html">Users</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="main-header">
+      <h2>Users</h2>
+      <button class="btn logout" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h3>Registered Users</h3>
+        <input type="text" id="userSearch" class="search" placeholder="Search users...">
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Registered</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <tr><td colspan="3">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/admin-api.js"></script>
+  <script src="js/users.js"></script>
+</body>
+</html>

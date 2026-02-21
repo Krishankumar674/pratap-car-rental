@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | Car Rental</title>
+  <link rel="stylesheet" href="css/admin-mixed.css"/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo">🚗</span>
+        <span>Car Rental Admin</span>
+      </div>
+
+      <nav class="menu">
+        <a class="item active" href="/admin/index.html">Dashboard</a>
+        <a class="item" href="/admin/cars.html">Cars</a>
+        <a class="item" href="/admin/bookings.html">Bookings</a>
+        <a class="item" href="/admin/users.html">Users</a>
+        <div class="hr"></div>
+        <button class="logout" id="logoutBtn">Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <header class="topbar">
+        <h1>Dashboard Overview</h1>
+        <div class="search">
+          <input id="searchBox" placeholder="Search (e.g., booking id, user)"/>
+        </div>
+      </header>
+
+      <!-- KPI CARDS -->
+      <section class="kpis">
+        <div class="kpi">
+          <div class="kpi-title">Total Cars</div>
+          <div class="kpi-value" id="kpiCars">—</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-title">Total Bookings</div>
+          <div class="kpi-value" id="kpiBookings">—</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-title">Active Bookings</div>
+          <div class="kpi-value" id="kpiActive">—</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-title">Registered Users</div>
+          <div class="kpi-value" id="kpiUsers">—</div>
+        </div>
+      </section>
+
+      <!-- CHARTS -->
+      <section class="grid">
+        <div class="card">
+          <div class="card-head">
+            <h3>Performance Overview</h3>
+          </div>
+          <canvas id="bookingsChart" height="140"></canvas>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Fleet Availability</h3>
+          </div>
+          <canvas id="fleetChart" height="140"></canvas>
+        </div>
+      </section>
+
+      <!-- TABLES -->
+      <section class="grid">
+        <div class="card">
+          <div class="card-head">
+            <h3>Recent Bookings</h3>
+            <a class="link" href="/admin/bookings.html">View all</a>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Car</th>
+                  <th>Range</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentBookings">
+                <tr><td colspan="5" class="muted">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>User Activity Log</h3>
+          </div>
+          <ul class="list" id="activityLog">
+            <li class="muted">Loading…</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="yy"></span> Car Rental Admin</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="js/dashboard-mixed.js"></script>
+</body>
+</html>

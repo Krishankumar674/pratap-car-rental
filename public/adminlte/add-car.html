@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add New Car</title>
+  <link rel="stylesheet" href="./css/adminlte.css" />
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Add New Car</h2>
+    <form id="carForm">
+      <input type="text" id="name" placeholder="Car Name" class="form-control mb-2" required />
+      <input type="text" id="brand" placeholder="Brand" class="form-control mb-2" required />
+      <input type="number" id="pricePerDay" placeholder="Price per Day" class="form-control mb-2" required />
+      <input type="number" id="seats" placeholder="Seats" class="form-control mb-2" required />
+      <input type="file" id="image" accept="image/*" class="form-control mb-2" required />
+      <button type="submit" class="btn btn-primary w-100">Add Car</button>
+    </form>
+    <p id="msg" class="text-center mt-3"></p>
+  </div>
+
+  <script>
+    const API_BASE = "/api/admin";
+
+    document.getElementById("carForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fileInput = document.getElementById("image");
+      const formData = new FormData();
+      formData.append("image", fileInput.files[0]);
+
+      // 1️⃣ Upload Image First
+      const uploadRes = await fetch(API_BASE + "/upload-image", {
+        method: "POST",
+        body: formData,
+      });
+      const uploadData = await uploadRes.json();
+      if (!uploadRes.ok) return alert("Image upload failed");
+
+      // 2️⃣ Add Car Details
+      const car = {
+        name: document.getElementById("name").value,
+        brand: document.getElementById("brand").value,
+        pricePerDay: document.getElementById("pricePerDay").value,
+        seats: document.getElementById("seats").value,
+        image: uploadData.path,
+      };
+
+      const addRes = await fetch("/api/cars", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(car),
+      });
+
+      const addData = await addRes.json();
+      document.getElementById("msg").innerText =
+        addRes.ok ? "✅ Car added successfully!" : addData.msg || "❌ Failed";
+    });
+  </script>
+</body>
+</html>

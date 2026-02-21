@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Cars | Admin</title>
+  <link rel="stylesheet" href="css/admin-pro.css" />
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <a href="index.html">Dashboard</a>
+    <a class="active" href="cars.html">Cars</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="users.html">Users</a>
+    <!-- <a href="settings.html">Settings</a> -->
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="content">
+    
+    <div class="navbar">
+      <h1>Manage Cars</h1>
+      <button class="btn btn-red" onclick="logout()">Logout</button>
+    </div>
+
+    <h2 class="page-title">Add New Car</h2>
+
+    <!-- Add Car Form -->
+    <div class="table-box" style="margin-bottom: 25px;">
+      <form id="addCarForm" enctype="multipart/form-data" onsubmit="return false;">
+        <div style="display: grid; grid-template-columns: repeat(2,1fr); gap: 20px;">
+
+          <input class="search-box" id="name" placeholder="Car Name" />
+          <input class="search-box" id="brand" placeholder="Brand" />
+          <input class="search-box" id="seats" type="number" placeholder="Seats" />
+          <input class="search-box" id="price" type="number" placeholder="Price per day" />
+
+          <div>
+            <label style="font-size:14px; color:#9ca3af;">Car Image</label>
+            <input type="file" id="image" accept="image/*" style="margin-top:6px;" />
+            <img id="preview" style="margin-top:15px; width:160px; border-radius:6px; display:none;">
+          </div>
+
+        </div>
+
+        <button class="btn btn-blue" id="addCarBtn" style="margin-top:15px;">
+          Add Car
+        </button>
+      </form>
+    </div>
+
+    <h2 class="page-title">All Cars</h2>
+
+    <input class="search-box" id="searchCars" placeholder="Search cars..." style="margin-bottom:15px;" />
+
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Seats</th>
+            <th>Price/Day</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="carTableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="js/admin-api.js"></script>
+  <script src="js/cars.js"></script>
+  <script>
+    // ✅ Image Preview
+    const imgInput = document.getElementById("image");
+    const preview = document.getElementById("preview");
+
+    imgInput.addEventListener("change", () => {
+      if (imgInput.files && imgInput.files[0]) {
+        preview.src = URL.createObjectURL(imgInput.files[0]);
+        preview.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>

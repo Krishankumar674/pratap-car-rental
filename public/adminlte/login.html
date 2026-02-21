@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Car Rental Dashboard</title>
+
+  <!-- ✅ AdminLTE CSS -->
+  <link rel="stylesheet" href="/adminlte/css/adminlte.css" />
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f6f9;
+      font-family: "Poppins", sans-serif;
+    }
+    .login-box {
+      width: 350px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h3 class="text-center mb-4">Admin Login</h3>
+
+    <input type="email" id="email" class="form-control mb-3" placeholder="Email" required />
+    <input type="password" id="password" class="form-control mb-3" placeholder="Password" required />
+    
+    <button id="loginBtn" class="btn btn-primary w-100">Login</button>
+    <p id="error" class="text-danger mt-3 text-center"></p>
+  </div>
+
+  <script>
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorEl = document.getElementById("error");
+
+      if (!email || !password) {
+        errorEl.innerText = "⚠️ Please enter both email and password.";
+        return;
+      }
+
+      try {
+        // ✅ Make sure backend URL is correct
+        const res = await fetch("http://localhost:5000/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.token) {
+          localStorage.setItem("token", data.token); // ✅ store JWT for future requests
+          alert("✅ Login successful!");
+          window.location.href = "/adminlte/index.html"; // redirect to Admin Dashboard
+        } else {
+          errorEl.innerText = "❌ " + (data.msg || "Invalid credentials");
+        }
+      } catch (err) {
+        console.error(err);
+        errorEl.innerText = "⚠️ Server error, please try again later.";
+      }
+    });
+  </script>
+</body>
+</html>

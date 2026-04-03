@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const carsContainer = document.getElementById("carsContainer");
 
   try {
-    const res = await fetch("https://localhost:5000/api/cars");
+    const res = await fetch("http://localhost:5000/api/cars");
     const cars = await res.json();
 
     if (!cars.length) {

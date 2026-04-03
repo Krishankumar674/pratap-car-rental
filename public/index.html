@@ -641,12 +641,12 @@
     document.addEventListener("DOMContentLoaded", async () => {
       try {
         // ✅ Fetch total cars
-        const carsRes = await fetch("https://pratap-car-rental-fusz.onrender.com/api/cars");
+        const carsRes = await fetch("https://localhost:5000/api/cars");
         const cars = await carRes.json();
         const totalCars = cars.length;
 
         // ✅ Fetch total bookings
-        const bookingsRes = await fetch("https://pratap-car-rental-fusz.onrender.com/api/bookings");
+        const bookingsRes = await fetch("https://localhost:5000/api/bookings");
         const bookings = await bookingRes.json();
         const totalBookings = bookings.length;
 

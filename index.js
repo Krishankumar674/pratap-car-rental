@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 
 // ✅ Serve uploaded images folder
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // ✅ Middleware
 app.use(cors());
 app.use(express.json());

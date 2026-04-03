@@ -514,7 +514,7 @@
       if (!path) return "images/no-image.png";
       return path.startsWith("http")
         ? path
-        : `http://localhost:5000/${path.replace(/^\/+/, "")}`;
+        : `/${path.replace(/^\/+/, "")}`;
     }
 
     // ✅ Booking Flow (same as car.html)
@@ -531,7 +531,7 @@
       }
 
       try {
-        const res = await fetch("http://localhost:5000/api/bookings", {
+        const res = await fetch("/api/bookings", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ carId, name, email, phone, startDate, endDate }),
@@ -554,7 +554,7 @@
       const container = document.getElementById("featuredCars");
 
       try {
-        const res = await fetch("http://localhost:5000/api/cars");
+        const res = await fetch("/api/cars");
         const cars = await res.json();
 
         if (!Array.isArray(cars) || cars.length === 0) {
@@ -641,17 +641,17 @@
     document.addEventListener("DOMContentLoaded", async () => {
       try {
         // ✅ Fetch total cars
-        const carsRes = await fetch("http://localhost:5000/api/cars");
+        const carsRes = await fetch("/api/cars");
         const cars = await carRes.json();
         const totalCars = cars.length;
 
         // ✅ Fetch total bookings
-        const bookingsRes = await fetch("http://localhost:5000/api/bookings");
+        const bookingsRes = await fetch("/api/bookings");
         const bookings = await bookingRes.json();
         const totalBookings = bookings.length;
 
         // ✅ Fetch branches count (agar hai)
-        // const branchRes = await fetch("http://localhost:5000/api/branches");
+        // const branchRes = await fetch("/api/branches");
         // const branches = await branchRes.json();
         const totalBranches = 12; // <- manually set for now
 

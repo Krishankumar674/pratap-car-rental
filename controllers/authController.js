@@ -66,7 +66,7 @@ exports.forgotPassword = async (req, res) => {
     await user.save();
 
     // Reset link (frontend)
-    const resetURL = `http://localhost:5000/reset-password.html?token=${resetToken}`;
+    const resetURL = `${req.protocol}://${req.get('host')}/reset-password.html?token=${resetToken}`;
 
     // Send email
     const transporter = nodemailer.createTransport({

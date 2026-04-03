@@ -4,5 +4,5 @@ function apiFetch(path, opts = {}) {
   const headers = opts.headers || {};
   headers["Content-Type"] = "application/json";
   if (token) headers["Authorization"] = "Bearer " + token;
-  return fetch("http://localhost:5000/api" + path, { ...opts, headers }).then((r) => r.json());
+  return fetch("/api" + path, { ...opts, headers }).then((r) => r.json());
 }

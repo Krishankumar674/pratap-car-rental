@@ -499,7 +499,7 @@
   <script>
   async function loadCars() {
     try {
-      const response = await fetch("http://localhost:5000/api/cars");
+      const response = await fetch("/api/cars");
       const cars = await response.json();
 
       const tableBody = document.querySelector("tbody");
@@ -510,7 +510,7 @@
           <tr>
             <td class="car-image">
               <div class="img-wrapper">
-                <img src="http://localhost:5000/${car.image}" alt="${car.name}" class="car-img">
+                <img src="/${car.image}" alt="${car.name}" class="car-img">
               </div>
             </td>
             <td class="product-name">

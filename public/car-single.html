@@ -448,7 +448,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`http://localhost:5000/api/cars/${carId}`);
+    const res = await fetch(`https://pratap-car-rental-fusz.onrender.com/api/cars/${carId}`);
     const car = await res.json();
 
     // ✅ Update main title and image

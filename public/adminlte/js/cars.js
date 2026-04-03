@@ -16,7 +16,7 @@ async function loadCars() {
         <td>${car.brand}</td>
         <td>${car.seats}</td>
         <td>₹${car.pricePerDay}</td>
-        <td><img src="http://localhost:5000/${car.image}" width="100" style="border-radius:5px"/></td>
+        <td><img src="https://pratap-car-rental-fusz.onrender.com/${car.image}" width="100" style="border-radius:5px"/></td>
         <td><button class="btn btn-danger btn-sm" onclick="deleteCar('${car._id}')">🗑️ Delete</button></td>
       </tr>
     `).join('');

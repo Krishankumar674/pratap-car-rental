@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const carsContainer = document.getElementById("carsContainer");
 
   try {
-    const res = await fetch("https://localhost:5000/api/cars");
+    const res = await fetch("https://pratap-car-rental-fusz.onrender.com/api/cars");
     const cars = await res.json();
 
     if (!cars.length) {
@@ -174,8 +174,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ✅ Render each car dynamically
     carsContainer.innerHTML = cars.map((car) => {
       const imgUrl =car.image.startsWith("uploads/")
-    ? `http://localhost:5000/${car.image}`
-    : `http://localhost:5000/${car.image}`;
+    ? `https://pratap-car-rental-fusz.onrender.com/${car.image}`
+    : `https://pratap-car-rental-fusz.onrender.com/${car.image}`;
 
 
       return `
@@ -226,7 +226,7 @@ async function bookCar(carId, carName) {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/bookings", {
+    const res = await fetch("https://pratap-car-rental-fusz.onrender.com/api/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ carId, name, email, phone, startDate, endDate }),

@@ -4,5 +4,5 @@ function apiFetch(path, opts = {}) {
   const headers = opts.headers || {};
   headers["Content-Type"] = "application/json";
   if (token) headers["Authorization"] = "Bearer " + token;
-  return fetch("https://localhost:5000/api" + path, { ...opts, headers }).then((r) => r.json());
+  return fetch("https://pratap-car-rental-fusz.onrender.com/api" + path, { ...opts, headers }).then((r) => r.json());
 }

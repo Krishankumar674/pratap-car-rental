@@ -448,7 +448,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`https://localhost:5000/api/cars/${carId}`);
+    const res = await fetch(`https://pratap-car-rental-fusz.onrender.com/api/cars/${carId}`);
     const car = await res.json();
 
     // ✅ Update main title and image
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      const bookingRes = await fetch("http://localhost:5000/api/bookings", {
+      const bookingRes = await fetch("https://pratap-car-rental-fusz.onrender.com/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ carId, name, email, phone, startDate, endDate })
@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Helper: build full URL for images
   const imageUrl = (path) => {
     if (!path) return "images/no-image.png";
-    return path.startsWith("http") ? path : `http://localhost:5000/${path.replace(/^\/+/, "")}`;
+    return path.startsWith("http") ? path : `https://pratap-car-rental-fusz.onrender.com/${path.replace(/^\/+/, "")}`;
   };
 
   // Booking function used by both main and related cards
@@ -535,7 +535,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!endDate) return alert("Booking cancelled.");
 
     try {
-      const res = await fetch("http://localhost:5000/api/bookings", {
+      const res = await fetch("https://pratap-car-rental-fusz.onrender.com/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ carId, name, email, phone, startDate, endDate })
@@ -554,7 +554,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch current car details
-    const res = await fetch(`http://localhost:5000/api/cars/${carId}`);
+    const res = await fetch(`https://pratap-car-rental-fusz.onrender.com/api/cars/${carId}`);
     if (!res.ok) throw new Error("Failed to load car details");
     const car = await res.json();
 
@@ -580,7 +580,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // Fetch related cars (all cars, then filter out current)
-    const allRes = await fetch("http://localhost:5000/api/cars");
+    const allRes = await fetch("https://pratap-car-rental-fusz.onrender.com/api/cars");
     const allCars = await allRes.json();
 
     // pick up to 3 related cars (simple: other cars same brand first, then fill)
